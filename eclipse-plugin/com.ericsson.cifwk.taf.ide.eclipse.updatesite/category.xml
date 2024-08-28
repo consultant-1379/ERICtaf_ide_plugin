@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="com.ericsson.cifwk.taf.ide.eclipse.tm.feature" version="0.0.0">
+      <category name="com.ericsson.cifwk.taf"/>
+   </feature>
+   <category-def name="com.ericsson.cifwk.taf" label="TAF Category"/>
+</site>

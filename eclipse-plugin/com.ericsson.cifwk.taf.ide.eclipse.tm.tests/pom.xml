@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ericsson.cifwk</groupId>
+		<artifactId>com.ericsson.cifwk.taf.ide.eclipse.root</artifactId>
+		<version>1.0.47-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>com.ericsson.cifwk.taf.ide.eclipse.tm.tests</artifactId>
+	<packaging>eclipse-test-plugin</packaging>
+	<name>TAF TM Plugin Test</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.ericsson.cifwk</groupId>
+			<artifactId>taf-core</artifactId>
+			<version>3.0.30</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-jars</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.ericsson.cifwk</groupId>
+									<artifactId>taf-core</artifactId>
+									<version>3.0.30</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.testng</groupId>
+									<artifactId>testng</artifactId>
+									<version>6.1.1</version>
+								</artifactItem>								
+							</artifactItems>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<!-- <debugPort>1000</debugPort>  -->
+					<product>org.eclipse.sdk.ide</product>
+					<application>org.eclipse.ui.ide.workbench</application>
+				</configuration>
+			</plugin>					
+		</plugins>
+	</build>
+</project>

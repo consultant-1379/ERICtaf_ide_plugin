@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.startup" />
+	<!-- Test ID Detector -->
+	<extension point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
+  		<hyperlinkDetector
+  			id="com.ericsson.cifwk.taf.ide.eclipse.tm.hyperlink.TestIdHyperlinkDetector"
+			class="com.ericsson.cifwk.taf.ide.eclipse.tm.hyperlink.TestIdHyperlinkDetector"
+			targetId="org.eclipse.jdt.ui.javaCode"
+			name="Test ID Hyperlink Detector">
+  		</hyperlinkDetector>
+	</extension>
+	
+	<!-- Test ID Validator -->
+    <extension id="id2" name="TAF Test ID Validator" build="true" manual="true" version="3" sourceid="org.eclipse.wst.xml.ui.internal.validation.DelegatingSourceValidatorForXML" point="org.eclipse.wst.validation.validatorV2">
+       <validator class="com.ericsson.cifwk.taf.ide.eclipse.tm.validator.TestIdValidator">
+          <include>
+       		<rules>
+          		<fileext ext="java"/>
+        	</rules>
+      	  </include>
+       </validator>
+    </extension>
+	
+	<!-- Preferences -->
+	<extension point="org.eclipse.ui.preferencePages">
+      <page name="TAF"
+            class="com.ericsson.cifwk.taf.ide.eclipse.tm.preferences.TafPreferencesPage"
+            id="com.ericsson.cifwk.taf.ide.eclipse.tm.preferences.TafPreferencesPage">
+      </page>
+    </extension>
+    <extension point="org.eclipse.core.runtime.preferences">
+      <initializer class="com.ericsson.cifwk.taf.ide.eclipse.tm.preferences.PreferenceInitializer" />
+    </extension>
+    <extension point="org.eclipse.ui.commands">
+		<command
+        defaultHandler="com.ericsson.cifwk.taf.ide.eclipse.tm.ui.OpenHandler"
+        id="com.ericsson.cifwk.taf.ide.eclipse.tm.plugin.OpenCommand"
+        name="OpenCommand">
+		</command>    	
+    </extension>
+    <extension
+          point="org.eclipse.ui.menus">
+       <menuContribution
+             locationURI="popup:#CompilationUnitEditorContext">
+             <command
+                   commandId="com.ericsson.cifwk.taf.ide.eclipse.tm.plugin.OpenCommand"
+                   label="Edit/Create in TAF"
+                   mnemonic="Ctrl+O"
+                   icon="icons/icon_eri.gif"
+                   tooltip="Open TAF for selected @testId in Browser">
+             </command>             
+       </menuContribution>
+    </extension>    
+</plugin>

@@ -1,0 +1,7 @@
+eclipse-plugin/com.ericsson.cifwk.taf.ide.eclipse.tm.plugin/lib/*
+eclipse-plugin/com.ericsson.cifwk.taf.ide.eclipse.tm.tests/screenshots/*
+.settings
+.project
+.classpath
+target
+*.lnk

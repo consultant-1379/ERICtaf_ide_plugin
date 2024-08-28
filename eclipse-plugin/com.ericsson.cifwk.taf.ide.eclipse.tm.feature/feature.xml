@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ericsson.cifwk.taf.ide.eclipse.tm.feature"
+      label="TAF TM"
+      version="1.0.28.qualifier"
+      provider-name="ERICSSON">
+
+   <plugin
+         id="com.ericsson.cifwk.taf.ide.eclipse.tm.plugin"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
